@@ -3,6 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/DrawE/Hackathons/NWHacksProjectJan2022/app/src/main/res/layout/activity_main.xml" value="0.10416666666666667" />
+        <entry key="..\:/Users/DrawE/Hackathons/NWHacksProjectJan2022/app/src/main/res/layout/content_main.xml" value="0.3390625" />
+        <entry key="..\:/Users/DrawE/Hackathons/NWHacksProjectJan2022/app/src/main/res/layout/fragment_first.xml" value="0.3390625" />
+        <entry key="..\:/Users/DrawE/Hackathons/NWHacksProjectJan2022/app/src/main/res/layout/fragment_second.xml" value="0.15364583333333334" />
+        <entry key="..\:/Users/DrawE/Hackathons/NWHacksProjectJan2022/app/src/main/res/layout/search_results.xml" value="0.3390625" />
+        <entry key="..\:/Users/DrawE/Hackathons/NWHacksProjectJan2022/app/src/main/res/menu/menu_main.xml" value="0.2869791666666667" />
+        <entry key="..\:/Users/DrawE/Hackathons/NWHacksProjectJan2022/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.303125" />
+        <entry key="..\:/Users/DrawE/Hackathons/NWHacksProjectJan2022/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.303125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.335" />
