@@ -110,6 +110,11 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+    public void uploadPdfFile(View v) {
+// !!! IMPLEMENT THIS
+
+    }
+
 
 
 }

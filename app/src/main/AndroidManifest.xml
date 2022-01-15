@@ -3,7 +3,7 @@
     package="com.example.pictureapp">
 
     <uses-feature android:name="android.hardware.camera" />
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
 
     <application
         android:allowBackup="true"
