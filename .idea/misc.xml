@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/DrawE/Hackathons/NWHacksProjectJan2022/app/src/main/res/layout/activity_main.xml" value="0.22056159420289856" />
-        <entry key="..\:/Users/DrawE/Hackathons/NWHacksProjectJan2022/app/src/main/res/layout/content_main.xml" value="0.28396739130434784" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/content_main.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_first.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_second.xml" value="0.2359375" />
       </map>
     </option>
   </component>
