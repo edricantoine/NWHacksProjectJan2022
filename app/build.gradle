@@ -31,6 +31,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.google.api-client:google-api-client-android:1.20.0'
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.3.0'
@@ -42,6 +43,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     //implementing google API's
+
     implementation 'com.google.android.gms:play-services-auth:16.0.1'
     implementation ('com.google.apis:google-api-services-drive:v3-rev136-1.25.0')
             {
@@ -52,4 +54,8 @@ dependencies {
                 exclude group: 'org.apache.httpcomponents'
             }
     implementation 'com.google.http-client:google-http-client-gson:1.26.0'
+}
+
+repositories {
+    google()
 }
