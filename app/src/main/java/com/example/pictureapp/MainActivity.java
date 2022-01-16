@@ -9,6 +9,9 @@ import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 
+import com.google.android.gms.vision.Frame;
+import com.google.android.gms.vision.text.TextBlock;
+import com.google.android.gms.vision.text.TextRecognizer;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
@@ -16,6 +19,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.provider.MediaStore;
+import android.util.SparseArray;
 import android.view.View;
 
 import androidx.navigation.NavController;
@@ -37,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
     private ImageView clickImageId;
+    private TextRecognizer tr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        tr = new TextRecognizer.Builder(getApplicationContext()).build();
+
 
         this.clickImageId = (ImageView)this.findViewById(R.id.imageView1);
 
@@ -75,7 +83,21 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == pic_id && resultCode == Activity.RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             clickImageId.setImageBitmap(photo);
+            Frame imageFrame = new Frame.Builder()
+                    .setBitmap(photo)
+                    .build();
+            String imageText = "";
+            SparseArray<TextBlock> textBlocks = tr.detect(imageFrame);
+
+            for (int i = 0; i < textBlocks.size(); i++) {
+                TextBlock textBlock = textBlocks.get(textBlocks.keyAt(i));
+                imageText = textBlock.getValue();
+                binding.textView.setText(imageText);
+            }
+            System.out.println(imageText);
+
         }
+
     }
 
 
