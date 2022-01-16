@@ -146,8 +146,10 @@ public class MainActivity extends AppCompatActivity {
 
         int size = prefs.getInt("list_size", 0);
 
-        for(int i=0; i<size; i++)
+        arr.clear();
+        for(int i=0; i<size; i++) {
             arr.add(prefs.getString("item_" + i, null));
+        }
 
 
 

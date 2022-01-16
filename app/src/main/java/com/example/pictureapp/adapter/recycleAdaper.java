@@ -1,5 +1,6 @@
 package com.example.pictureapp.adapter;
 
+import android.content.ClipData;
 import android.content.Context;
 import android.text.Layout;
 import android.view.LayoutInflater;
@@ -19,15 +20,10 @@ import java.util.List;
 public class recycleAdaper extends RecyclerView.Adapter<recycleAdaper.ItemViewHolder>{
     private List<CharSequence> dataset;
     private Context context;
+    private ItemViewHolder vh;
 
     public recycleAdaper(List<CharSequence> dataset, Context context) {
-
-        List<CharSequence> copy = new ArrayList<>();
-        this.dataset = copy;
-        for(CharSequence c : dataset) {
-            copy.add(c);
-        }
-
+        this.dataset = dataset;
         this.context = context;
     }
 
@@ -36,8 +32,7 @@ public class recycleAdaper extends RecyclerView.Adapter<recycleAdaper.ItemViewHo
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View adapterLayout = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item, parent, false);
-        ItemViewHolder vh = new ItemViewHolder(adapterLayout);
-        vh.setIsRecyclable(false);
+            vh = new ItemViewHolder(adapterLayout);
         return vh;
     }
 
@@ -71,4 +66,6 @@ public class recycleAdaper extends RecyclerView.Adapter<recycleAdaper.ItemViewHo
         }
         notifyItemRangeRemoved(0, size);
     }
+
+
 }
