@@ -3,7 +3,9 @@ package com.example.pictureapp;
 import android.Manifest;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -16,6 +18,7 @@ import com.google.android.gms.vision.text.TextRecognizer;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -37,6 +40,8 @@ import android.widget.Toast;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
     private static final int pic_id = 123;
@@ -46,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private ImageView clickImageId;
     private TextRecognizer tr;
+    private SharedPreferences prefs;
+    static private List<CharSequence> arr = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        prefs = getSharedPreferences("PhotoAppPreferences", Context.MODE_PRIVATE);
         tr = new TextRecognizer.Builder(getApplicationContext()).build();
 
 
@@ -61,9 +70,9 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(binding.toolbar);
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        //NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        //appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
+        //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
@@ -87,14 +96,38 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        List<CharSequence> arr = new ArrayList<>();
+
         binding.button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 arr.add(binding.textView.getText());
+                Toast.makeText(MainActivity.this, "Added item to list.", Toast.LENGTH_SHORT).show();
+                SharedPreferences.Editor edit = prefs.edit();
+                edit.putInt("list_size", arr.size());
+                for(int i=0;i<arr.size(); i++)
+                    edit.putString("item_" + i, String.valueOf(arr.get(i)));
+                edit.commit();
             }
         });
+
+        binding.button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, ListActivity.class));
+            }
+        });
+
+        int size = prefs.getInt("list_size", 0);
+
+        for(int i=0; i<size; i++)
+            arr.add(prefs.getString("item_" + i, null));
+
+
+
+    }
+
+    protected static List<CharSequence> getArr() {
+        return arr;
     }
 
 
