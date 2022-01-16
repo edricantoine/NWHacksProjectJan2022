@@ -71,8 +71,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        app:layout_constraintVertical_bias="0.04"
-        tools:text="@string/nopic" />
+        app:layout_constraintVertical_bias="0.04" />
 
     <Button
         android:id="@+id/button2"

@@ -100,13 +100,19 @@ public class MainActivity extends AppCompatActivity {
         binding.button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                arr.add(binding.textView.getText());
-                Toast.makeText(MainActivity.this, "Added item to list.", Toast.LENGTH_SHORT).show();
-                SharedPreferences.Editor edit = prefs.edit();
-                edit.putInt("list_size", arr.size());
-                for(int i=0;i<arr.size(); i++)
-                    edit.putString("item_" + i, String.valueOf(arr.get(i)));
-                edit.commit();
+                CharSequence s = binding.textView.getText();
+                String sFinal = String.valueOf(s);
+                if(!sFinal.isEmpty()) {
+                    arr.add(binding.textView.getText());
+                    Toast.makeText(MainActivity.this, "Added item to list.", Toast.LENGTH_SHORT).show();
+                    SharedPreferences.Editor edit = prefs.edit();
+                    edit.putInt("list_size", arr.size());
+                    for (int i = 0; i < arr.size(); i++)
+                        edit.putString("item_" + i, String.valueOf(arr.get(i)));
+                    edit.commit();
+                } else {
+                    Toast.makeText(MainActivity.this, "Error! No text detected.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -131,7 +137,10 @@ public class MainActivity extends AppCompatActivity {
                 String time = System.currentTimeMillis() + "";
 
                 // Showing a toast message at the time when we are capturing screenshot
-                Toast.makeText(MainActivity.this, "Current time in millisecond after app restart" + time, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Current time in milliseconds after app restart" + time, Toast.LENGTH_SHORT).show();
+                arr.clear();
+                prefs.edit().clear().commit();
+
             }
         });
 
@@ -167,7 +176,12 @@ public class MainActivity extends AppCompatActivity {
                 imageText = textBlock.getValue();
                 binding.textView.setText(imageText);
             }
-            System.out.println(imageText);
+
+            if(imageText.isEmpty()) {
+                Toast.makeText(MainActivity.this, "Error! No text detected.", Toast.LENGTH_SHORT).show();
+            }
+
+
 
         }
 

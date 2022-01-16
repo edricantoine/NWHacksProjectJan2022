@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pictureapp.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class recycleAdaper extends RecyclerView.Adapter<recycleAdaper.ItemViewHolder>{
@@ -20,7 +21,13 @@ public class recycleAdaper extends RecyclerView.Adapter<recycleAdaper.ItemViewHo
     private Context context;
 
     public recycleAdaper(List<CharSequence> dataset, Context context) {
-        this.dataset = dataset;
+
+        List<CharSequence> copy = new ArrayList<>();
+        this.dataset = copy;
+        for(CharSequence c : dataset) {
+            copy.add(c);
+        }
+
         this.context = context;
     }
 
@@ -29,7 +36,9 @@ public class recycleAdaper extends RecyclerView.Adapter<recycleAdaper.ItemViewHo
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View adapterLayout = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item, parent, false);
-        return new ItemViewHolder(adapterLayout);
+        ItemViewHolder vh = new ItemViewHolder(adapterLayout);
+        vh.setIsRecyclable(false);
+        return vh;
     }
 
     @Override
@@ -50,5 +59,16 @@ public class recycleAdaper extends RecyclerView.Adapter<recycleAdaper.ItemViewHo
             textView = view.findViewById(R.id.item_title);
 
         }
+    }
+
+    public void clear() {
+        int size = dataset.size();
+        if (size > 0) {
+            for (int i = 0; i < size; i++) {
+                dataset.remove(0);
+            }
+
+        }
+        notifyItemRangeRemoved(0, size);
     }
 }

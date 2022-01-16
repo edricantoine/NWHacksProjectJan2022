@@ -26,4 +26,6 @@ public class ListActivity extends AppCompatActivity {
         rv.setAdapter(ra);
         rv.setHasFixedSize(true);
     }
+
+
 }
