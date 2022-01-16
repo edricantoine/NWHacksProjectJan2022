@@ -42,7 +42,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    implmentation 'com.google.api-client:google-api-client-android:1.22.0'
-    implmentation 'com.google.apis:google-api-services-vision:v1-rev357-1.22.0'
-    implmentation 'com.google.code.findbugs:jsr305:2.0.1'
+    //adding google vision api dependencies
+    implementation 'com.google.cloud:google-cloud-vision'
+
 }
