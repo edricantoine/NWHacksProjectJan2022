@@ -35,6 +35,9 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.List;
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     private static final int pic_id = 123;
 
@@ -81,6 +84,15 @@ public class MainActivity extends AppCompatActivity {
 
                 Toast.makeText(MainActivity.this, binding.textView.getText(), Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/search?q=" + binding.textView.getText())));
+            }
+        });
+
+        List<CharSequence> arr = new ArrayList<>();
+        binding.button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                arr.add(binding.textView.getText());
             }
         });
     }
