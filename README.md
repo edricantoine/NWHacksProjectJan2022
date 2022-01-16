@@ -14,6 +14,7 @@ Look no further!
 
 The app harnesses the power of Google's machine learning and allows the user to snap a picture, copy and search the text from any visually recognizable elements within a few clicks.
 
+<img src="./app/img/a.jpg" width="220" />  <img src="./app/img/b.jpg" width="220"/>
 
 ### Try it out [**here**] (insert url after deployment)
 ### Checkout our [**Devpost submission**] (insert url after submission)
