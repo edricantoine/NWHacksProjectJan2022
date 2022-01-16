@@ -6,6 +6,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -71,6 +72,15 @@ public class MainActivity extends AppCompatActivity {
                 } catch (ActivityNotFoundException e) {
                     System.out.println("Error!");
                 }
+            }
+        });
+
+        binding.button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Toast.makeText(MainActivity.this, binding.textView.getText(), Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/search?q=" + binding.textView.getText())));
             }
         });
     }
