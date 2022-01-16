@@ -117,6 +117,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        binding.button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // after on CLick we are using finish to close and then just after that
+                // we are calling startactivity(getIntent()) to open our application
+                finish();
+                startActivity(getIntent());
+
+                // this basically provides animation
+                overridePendingTransition(0, 0);
+                String time = System.currentTimeMillis() + "";
+
+                // Showing a toast message at the time when we are capturing screenshot
+                Toast.makeText(MainActivity.this, "Current time in millisecond after app restart" + time, Toast.LENGTH_SHORT).show();
+            }
+        });
+
         int size = prefs.getInt("list_size", 0);
 
         for(int i=0; i<size; i++)
